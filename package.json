@@ -1,0 +1,16 @@
+{
+  "name": "didlydoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "lowdb": "^3.0.0",
+    "nanoid": "^3.1.30"
+  }
+}

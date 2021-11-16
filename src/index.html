@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Didlydoo</title>
+</head>
+<body>
+    <h1>Didlydoo</h1>
+    <main>
+        <div class="input">
+            <label for="eventName">Event name</label>
+            <input type="text" name="eventName" placeholder="Type the event name">
+            <label for="eventDesc">Event description</label>
+            <input type="text" name="eventDesc" placeholder="Type the event description">
+            <label for="eventDate">Event date</label>
+            <input type="date" name="eventDate">
+            <button class="addEventDate">+</button>
+            <button class="sendEvent">Add an event</button>
+        </div>
+
+        <div class="eventList">
+            <!-- Exemple -->
+            <article>
+                <h2>event title</h2>
+                <p>event description</p>
+                <table>
+                    <tr>
+                      <th></th>
+                      <th>date 1</th>
+                      <th>date 2</th>
+                    </tr>
+                    <tr>
+                      <td>name 1</td>
+                      <td>V or X</td>
+                      <td>V or X</td>
+                    </tr>
+                    <tr>
+                      <td>name 2</td>
+                      <td>V or X</td>
+                      <td>V or X</td>
+                    </tr>
+                    <tr>
+                        <td>Number of participant <button>+</button></td>
+                        <td>data 1 number of V</td>
+                        <td>data 2 number of V</td>
+                    </tr>
+                  </table> 
+            </article>
+        </div>
+    </main>
+</body>
+<script src="js/index.js"></script>
+</html>
