@@ -1,5 +1,9 @@
-fetch("http://localhost:3000/api/events")
-    .then(resp => resp.json())
-    .then(data => {
-        console.log(data);
-    })
+// Button add date
+const addEventDate = document.querySelector(".addEventDate")
+
+addEventDate.addEventListener("click", e => {
+    let inputDate = document.createElement("input")
+    inputDate.type = "date"
+    inputDate.className = "eventDate"
+    document.querySelector(".input").insertBefore(inputDate, addEventDate)
+})
