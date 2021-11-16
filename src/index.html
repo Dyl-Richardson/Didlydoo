@@ -14,13 +14,18 @@
         <div class="input">
             <label for="eventName">Event name</label>
             <input type="text" name="eventName" placeholder="Type the event name">
+
             <label for="eventDesc">Event description</label>
             <input type="text" name="eventDesc" placeholder="Type the event description">
+
             <label for="eventDate">Event date</label>
             <input type="date" name="eventDate">
             <button class="addEventDate">+</button>
-            <button class="sendEvent">Add an event</button>
         </div>
+        
+        <form method="post">
+            <button class="sendEvent">Add an event</button>
+        </form>
 
         <div class="eventList">
             <!-- Exemple -->
