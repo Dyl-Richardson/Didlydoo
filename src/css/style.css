@@ -1,0 +1,45 @@
+body {
+  padding: 0 5%;
+}
+
+header {
+  text-align: center;
+}
+
+table {
+  border: 1px solid black;
+  width: 55vw;
+  height: 30vh;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.eventList {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.v {
+  color: green;
+}
+
+.x {
+  color: red;
+}
+
+.null {
+  color: grey;
+}
+
+.v,
+.x,
+.null {
+  font-weight: bold;
+}
