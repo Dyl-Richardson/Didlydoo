@@ -1,68 +1,30 @@
 [
   {
-    "id": "b70b49b10e64",
-    "name": "azoij",
+    "id": "be72a5efdeb0",
+    "name": "Crying for your code ",
     "author": "Azad",
-    "description": "jsodf",
+    "description": "satrday afternon 23'oclock",
     "dates": [
-      "2021-11-18",
-      "2021-11-03"
+      "2021-11-20",
+      "2021-11-21"
     ],
-    "created_at": "2021-11-17T14:04:19.887Z",
-    "num_modification": 2,
-    "last_modification": "2021-11-17T14:06:46.572Z",
+    "created_at": "2021-11-17T15:06:45.990Z",
+    "num_modification": 0,
+    "last_modification": "2021-11-17T15:06:45.990Z",
     "attendees": []
   },
   {
-    "id": "38b643aeb883",
-    "name": "The big sale @ The Mall",
-    "description": "I want to buy stuff at the mall, but don't want to go alone who is up?",
-    "author": "Jean D'eau",
+    "id": "5afe63669274",
+    "name": "FootBall Match",
+    "author": "Azad",
+    "description": "Friday morning 8  o'clock",
     "dates": [
-      "2022-01-10",
-      "2022-02-10",
-      "2022-03-10",
-      "2022-03-11",
-      "2022-03-12"
+      "2021-11-20",
+      "2021-11-27"
     ],
-    "attendees": [
-      {
-        "name": "Michou",
-        "dates": [
-          {
-            "date": "2022-01-10",
-            "available": true
-          }
-        ]
-      },
-      {
-        "name": "Jane Doe",
-        "dates": [
-          {
-            "date": "2022-01-10",
-            "available": true
-          },
-          {
-            "date": "2022-02-10",
-            "available": true
-          },
-          {
-            "date": "2022-03-10",
-            "available": true
-          },
-          {
-            "date": "2022-03-11",
-            "available": true
-          },
-          {
-            "date": "2022-03-12",
-            "available": false
-          }
-        ]
-      }
-    ],
-    "created_at": "2021-11-13T14:00",
+    "created_at": "2021-11-17T15:05:32.681Z",
     "num_modification": 0,
-    "last_modification": "2021-11-13T14:00"
+    "last_modification": "2021-11-17T15:05:32.681Z",
+    "attendees": []
   }
 ]
