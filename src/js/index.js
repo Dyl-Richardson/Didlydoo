@@ -101,23 +101,43 @@ fetch("http://localhost:3000/api/events")
                 const newTd = document.createElement("td")
                 const name = document.createElement("input")
                 name.placeholder = "name"
-                // 
-                // const pushButton = document.createElement("button")
-                // pushButton.innerText = "Add"
-                // pushButton.id = data[i].id
-                // pushButton.addEventListener("click", e => {
-                //     const id = e.target.id
-                //     // temp2.children[1].textContent
-                //     fetch("http://localhost:3000/api/events/"+id+"/attend"), {
-                //         method: 'POST',
-                //         body:JSON.stringify({
-                             
-                //         })
-                //     }
+                name.className = "name"
 
-                // }) 
-                // newTd.appendChild(pushButton)
                 // 
+                const pushButton = document.createElement("button")
+                pushButton.innerText = "Add"
+                pushButton.id = data[i].id
+                pushButton.addEventListener("click", e => {
+                    const id = e.target.id
+                    const numberOfChild = e.target.parentElement.parentElement.childElementCount
+                    const date = []
+                    for (let index = 1; index < numberOfChild ; index++) {
+                        date.push(
+                            { 
+                                "date": data[0].dates[index-1].date,
+                                "available": new Boolean(e.target.parentElement.parentElement.children[index].value) 
+                            }
+                        )
+                    }
+
+                    const info = {
+                        "name": e.target.nextSibling.value,
+                        "dates" : date
+                    }
+                    console.log(info);
+
+                    fetch("http://localhost:3000/api/events/"+id+"/attend", {
+                        method: 'POST',
+                        body:JSON.stringify(info),
+                        headers:{
+                            "Content-Type": "application/json"
+                        }
+                    })
+
+                }) 
+                newTd.appendChild(pushButton)
+                // 
+
                 newTd.appendChild(name)
                 newTr.appendChild(newTd)
                 // edit available
@@ -128,12 +148,15 @@ fetch("http://localhost:3000/api/events")
                     button.addEventListener("click", e => {
                         if (button.textContent === "?") {
                             button.innerText = "V"
+                            td.value = "true"
                         }
                         else if (button.textContent === "V") {
                             button.innerText = "X"
+                            td.value = "false"
                         }
                         else {
                             button.innerText = "?"
+                            td.value = "null"
                         }
                     })
                     td.appendChild(button)
