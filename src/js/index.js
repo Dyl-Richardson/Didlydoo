@@ -1,4 +1,6 @@
 
+const editInput = document.querySelector('.edit-input')
+
 const sendEvent  = document.getElementById('sendEvent')
 let name = "azad";
 let comeOrNot = true
@@ -33,7 +35,6 @@ sendEvent.addEventListener('click',function(e){
         
     })
   
-    showMember()
 
     e.preventDefault();
 })
@@ -52,29 +53,47 @@ addEventDate.addEventListener("click", e => {
 })
 
 // Generate event list
-
- 
-
-
 fetch("http://localhost:3000/api/events")
-    .then(resp => resp.json())
-    .then(data => {
-        for (let i = 0; i < data.length; i++) {
+.then(resp => resp.json())
+.then(data => {
+    for (let i = 0; i < data.length; i++) {   
+        const event = document.createElement("article")
 
-            const event = document.createElement("article")
+        // Delete button
+        const del = document.createElement("button")
+        del.innerText = "delete"
+        del.addEventListener('click',()=>{
+            fetch("http://localhost:3000/api/events/"+ data[i].id+"/",{
+                method:"Delete"
+            })
+        })
 
+        event.appendChild(del)
+
+        // Edit button
+        const edit = document.createElement("button")
+        edit.innerText = "edit"
+        edit.addEventListener('click',()=>{
+            editInput.classList.toggle('show')
+            chanThis(data[i].id)
+        })
+        event.appendChild(edit)
+
+            // event title / descirption
             const eventTitle = document.createElement("h2")
             eventTitle.innerText = data[i].name
             
             const eventDesc = document.createElement("p")
             eventDesc.innerText = data[i].description
 
+            // Event table
             const table = document.createElement("table")
 
             const trDate = document.createElement("tr")
             const thDateBlank = document.createElement("th")
             trDate.appendChild(thDateBlank)
             
+            // event date
             for (let date = 0; date < data[i].dates.length; date++) {
                 const thDate = document.createElement("th")
                 thDate.innerText = data[i].dates[date].date
@@ -82,12 +101,14 @@ fetch("http://localhost:3000/api/events")
                 table.appendChild(trDate)
             }
 
+            // event attendees name
             for (let member = 0; member < data[i].dates[0].attendees.length; member++) {
                 const trMember = document.createElement("tr")
                 const tdMemberName = document.createElement("td")
                 tdMemberName.innerText = data[i].dates[0].attendees[member].name
                 trMember.appendChild(tdMemberName)
                 
+                // event attendees available
                 for (let date = 0; date < data[i].dates.length; date++) {
                     const tdMemberDispo = document.createElement("td")
                     if (data[i].dates[date].attendees[member].available === true) {
@@ -107,11 +128,13 @@ fetch("http://localhost:3000/api/events")
                 table.appendChild(trMember)
             }
     
+            // number of participant
             const trNumbOfPart = document.createElement("tr")
             const tdNumbOfPart = document.createElement("td")
             tdNumbOfPart.innerText = data[i].dates[0].attendees.length + " participants"
             trNumbOfPart.appendChild(tdNumbOfPart)
             
+            // number of participant per date
             for (let index = 0; index < data[i].dates.length; index++) { 
                 let numberOfV = 0         
                 const tdNumberOfV = document.createElement("td")
@@ -122,11 +145,56 @@ fetch("http://localhost:3000/api/events")
                     }
                 } 
                 tdNumberOfV.innerText = numberOfV
-                console.log(numberOfV);
             }
 
+            // add participant
             const addMember = document.createElement("button")
             addMember.innerText = "+"
+            addMember.addEventListener("click", e => {
+                const newTr = document.createElement("tr")
+                const newTd = document.createElement("td")
+                const name = document.createElement("input")
+                name.placeholder = "name"
+                // 
+                // const pushButton = document.createElement("button")
+                // pushButton.innerText = "Add"
+                // pushButton.id = data[i].id
+                // pushButton.addEventListener("click", e => {
+                //     const id = e.target.id
+                //     // temp2.children[1].textContent
+                //     fetch("http://localhost:3000/api/events/"+id+"/attend"), {
+                //         method: 'POST',
+                //         body:JSON.stringify({
+                             
+                //         })
+                //     }
+
+                // }) 
+                // newTd.appendChild(pushButton)
+                // 
+                newTd.appendChild(name)
+                newTr.appendChild(newTd)
+                // edit available
+                for (let index = 0; index < data[i].dates.length; index++) {        
+                    const td = document.createElement("td")
+                    const button = document.createElement("button")
+                    button.innerText = "?"
+                    button.addEventListener("click", e => {
+                        if (button.textContent === "?") {
+                            button.innerText = "V"
+                        }
+                        else if (button.textContent === "V") {
+                            button.innerText = "X"
+                        }
+                        else {
+                            button.innerText = "?"
+                        }
+                    })
+                    td.appendChild(button)
+                    newTr.appendChild(td)
+                }
+                table.insertBefore(newTr, trNumbOfPart)
+            })
             tdNumbOfPart.appendChild(addMember)
 
             table.appendChild(trNumbOfPart)
@@ -139,36 +207,46 @@ fetch("http://localhost:3000/api/events")
     })
   
 
-const btn = document.getElementById('btn')
-btn.addEventListener('click',()=>{
-    fetch("http://localhost:3000/api/events/d0941934ed10/",{
-        method:"Delete"
-    })
+
+
+function  chanThis(di) {
+    
+
+const changeBtn = document.getElementById('change')
+const cancle= document.getElementById('cancle')
+
+cancle.addEventListener('click',()=>{
+    editInput.classList.remove('show')
 })
 
 
 
- 
-//  function showMember() { 
-//     fetch('http://localhost:3000/api/events')
-//     .then(resp=>resp.json())
-//     .then((data)=>{
-//         for (let i = 0; i < data.length; i++) {
-//             for (let member = 0; member < data[i].dates[0].attendees.length; member++) {
-//                 console.log(data[i].dates[0].attendees[member].name)
+changeBtn.addEventListener('click',()=>{
 
-//                 const html = `
-//                 <table border="11>
-//                 <tr><td>${data[i].dates[0].attendees[member].name} </td><tr>
-//                 </table>
 
-//                 `
-                  
-                  
-//               }
-//         }
-      
-//     })
+  let  editName = document.getElementById('edit-name').value;
 
-//  }
+   let editDesc = document.getElementById('edit-desc').value;
 
+   const editEvent = {
+    name: editName,
+    description: editDesc,
+
+    author: 'Azad'
+}
+   
+       fetch('http://localhost:3000/api/events/'+di,{
+           method: 'PATCH',
+           body:JSON.stringify(editEvent),
+           headers:{
+               "Content-Type": "application/json"
+           }
+           
+       })
+
+
+})
+
+
+
+}
