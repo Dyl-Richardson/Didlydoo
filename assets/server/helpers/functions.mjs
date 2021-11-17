@@ -5,17 +5,6 @@ import { Low, JSONFile } from 'lowdb'
 
 const nanoid = customAlphabet('1234567890abcdef', 12)
 
-export const ERRORS = { 
-  NO_ID: "You need to specify a resource id in the URL",
-  NOT_FOUND: "Not found. There is no object with this id",
-  NO_BODY: "There is no body to the request. POST/PATCH request must have a JSON body",
-}
-
-export const JoiOptions = {
-  convert: false,
-  dateFormat: 'date'
-}
-
 export const remapData = d => {
     const _d = { ... d}
     _d.dates = _d.dates
@@ -76,7 +65,7 @@ export const patchEvent = (event, patch) => {
 
 export const getDB = async () => {
   const __dirname = dirname(fileURLToPath(import.meta.url))
-  const adapter = new JSONFile(join(__dirname, 'db/db.json'))
+  const adapter = new JSONFile(join(__dirname, '../db/db.json'))
   const db = new Low(adapter)
 
   await db.read()

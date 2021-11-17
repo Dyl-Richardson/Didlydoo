@@ -15,12 +15,6 @@ export const patchEventSchema = Joi.object({
   description: Joi.string().optional(),
 })
 
-export const putEventSchema = Joi.object({
-  name: Joi.string().required(),
-  author: Joi.string().required(),
-  description: Joi.string().required(),
-})
-
 export const addDateSchema = Joi.object({
   dates: Joi.array().items(
     Joi.string().isoDate()

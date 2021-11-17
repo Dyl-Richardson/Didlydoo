@@ -9,7 +9,6 @@ addEventDate.addEventListener("click", e => {
 })
 
 // Generate event list
-let numberOfV = 0
 
 fetch("http://localhost:3000/api/events")
     .then(resp => resp.json())
@@ -66,28 +65,23 @@ fetch("http://localhost:3000/api/events")
             const tdNumbOfPart = document.createElement("td")
             tdNumbOfPart.innerText = data[i].dates[0].attendees.length + " participants"
             trNumbOfPart.appendChild(tdNumbOfPart)
-
-            // 
-            // for (let index = 0; index < data[i].dates.length; index++) {
-            //     numberOfV = 0
-
-            //     for (let idk = 0; idk < data[i].dates[0].attendees.length; idk++) {
-            //         const element = array[idk];
-                    
-            //     }
-            // }
-            // 
-
-            for (let trNumbOfV = 0; trNumbOfV < data[i].dates.length; trNumbOfV++) {
+            
+            for (let index = 0; index < data[i].dates.length; index++) { 
+                let numberOfV = 0         
                 const tdNumberOfV = document.createElement("td")
-                tdNumberOfV.innerText = numberOfV
                 trNumbOfPart.appendChild(tdNumberOfV)
+                for (let idk = 0; idk < data[i].dates[index].attendees.length; idk++) {
+                    if (data[i].dates[index].attendees[idk].available === true) {
+                        numberOfV++
+                    }
+                } 
+                tdNumberOfV.innerText = numberOfV
+                console.log(numberOfV);
             }
 
             const addMember = document.createElement("button")
             addMember.innerText = "+"
             tdNumbOfPart.appendChild(addMember)
-
 
             table.appendChild(trNumbOfPart)
 
