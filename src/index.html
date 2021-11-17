@@ -13,21 +13,47 @@
         <h1>Didlydoo</h1>
     
         <div class="input">
+          <div class="grid">
             <label for="eventName">Event name</label>
-            <input type="text" name="eventName" placeholder="Type the event name">
+            <input type="text" id="eventName" placeholder="Type the event name" required>
+          </div>
 
+          <div class="grid">
             <label for="eventDesc">Event description</label>
-            <input type="text" name="eventDesc" placeholder="Type the event description">
+            <input type="text" id="eventDesc" placeholder="Type the event description">
+          </div>
+          <div class="grid">
+            <label for="author">Author</label>
+            <input type="text" id="author" placeholder="author">
+          </div>
 
+          <div class="grid" >
             <label for="eventDate">Event date</label>
-            <input type="date" name="eventDate">
-            <button class="addEventDate">+</button>
-        </div>
-        
-        <form method="post">
-            <button class="sendEvent">Add an event</button>
-        </form>
+            <input type="date" id="eventDate" required> 
+          </div>
 
+          <div class="grid">
+            <label for="eventDate">Event date</label>
+           <input type="date" id="eventDate1">
+          </div>
+         
+        </div>
+        <div>
+
+          <button class="addEventDate">+</button>
+          <button class="sendEvent" id="sendEvent">Add an event</button>
+        </div>
+        <div class="edit-input" >
+          <input id="edit-name" class="e-input" type="text" placeholder="name...">
+        <input id="edit-desc"  class="e-input" type="text" placeholder="description..."> 
+        <input type="text" id="edit-author" class="e-input" placeholder="author">
+        <div class="e-input">
+          <button id="change" >change</button>
+            <button id="cancle">cancle</button>
+
+        </div>  
+        </div>
+      
     </header>
 
         <hr>
@@ -37,5 +63,5 @@
         </div>
     </main>
 </body>
-<script src="js/index.js"></script>
+<script src="./js/index.js"></script>
 </html>
