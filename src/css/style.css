@@ -47,3 +47,28 @@ article {
 .null {
   font-weight: bold;
 }
+
+
+.edit-input{
+  width: 300px;
+  height: 250px;
+  background-color: wheat;
+  position: absolute;
+  left: 45%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  display: none;
+}
+
+.edit-input.show{
+  display: flex;
+}
+.e-input{
+  margin-top: 1rem;
+}
+
+#change, #cancle{
+  padding: 3px;
+}

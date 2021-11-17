@@ -14,20 +14,26 @@
     
         <div class="input">
             <label for="eventName">Event name</label>
-            <input type="text" name="eventName" placeholder="Type the event name">
-
+            <input type="text" id="eventName" placeholder="Type the event name">
             <label for="eventDesc">Event description</label>
-            <input type="text" name="eventDesc" placeholder="Type the event description">
-
+            <input type="text" id="eventDesc" placeholder="Type the event description">
             <label for="eventDate">Event date</label>
-            <input type="date" name="eventDate">
+            <input type="date" id="eventDate"> 
+             <label for="eventDate">Event date</label>
+            <input type="date" id="eventDate1">
             <button class="addEventDate">+</button>
+            <button class="sendEvent" id="sendEvent">Add an event</button>
         </div>
-        
-        <form method="post">
-            <button class="sendEvent">Add an event</button>
-        </form>
+        <div class="edit-input" >
+          <input id="edit-name" class="e-input" type="text" placeholder="name">
+        <input id="edit-desc"  class="e-input" type="text" placeholder="description"> 
+        <div class="e-input">
+          <button id="change" >change</button>
+            <button id="cancle">cancle</button>
 
+        </div>  
+        </div>
+      
     </header>
 
         <hr>
@@ -37,5 +43,5 @@
         </div>
     </main>
 </body>
-<script src="js/index.js"></script>
+<script src="./js/index.js"></script>
 </html>

@@ -1,3 +1,47 @@
+
+const editInput = document.querySelector('.edit-input')
+
+const sendEvent  = document.getElementById('sendEvent')
+let name = "azad";
+let comeOrNot = true
+
+
+
+sendEvent.addEventListener('click',function(e){
+
+    let  eventName = document.getElementById('eventName').value;
+    let  eventDesc = document.getElementById('eventDesc').value;
+    let eventDate = document.getElementById('eventDate').value;
+    let eventDate1 = document.getElementById('eventDate1').value;
+    
+    const newEvent = {
+        name: eventName,
+        description: eventDesc,
+        dates: [
+            eventDate,
+            eventDate1
+        ],
+        author: 'Azad'
+    }
+   
+    
+     fetch('http://localhost:3000/api/events',{
+        method: 'POST',
+        body:JSON.stringify(newEvent),
+        headers:{
+            "Content-Type": "application/json"
+        }
+
+        
+    })
+  
+
+    e.preventDefault();
+})
+ 
+
+
+
 // Button add date
 const addEventDate = document.querySelector(".addEventDate")
 
@@ -18,11 +62,21 @@ fetch("http://localhost:3000/api/events")
         // Delete button
         const del = document.createElement("button")
         del.innerText = "delete"
+        del.addEventListener('click',()=>{
+            fetch("http://localhost:3000/api/events/"+ data[i].id+"/",{
+                method:"Delete"
+            })
+        })
+
         event.appendChild(del)
 
         // Edit button
         const edit = document.createElement("button")
         edit.innerText = "edit"
+        edit.addEventListener('click',()=>{
+            editInput.classList.toggle('show')
+            chanThis(data[i].id)
+        })
         event.appendChild(edit)
 
             // event title / descirption
@@ -151,3 +205,48 @@ fetch("http://localhost:3000/api/events")
             document.querySelector(".eventList").appendChild(event)
         }
     })
+  
+
+
+
+function  chanThis(di) {
+    
+
+const changeBtn = document.getElementById('change')
+const cancle= document.getElementById('cancle')
+
+cancle.addEventListener('click',()=>{
+    editInput.classList.remove('show')
+})
+
+
+
+changeBtn.addEventListener('click',()=>{
+
+
+  let  editName = document.getElementById('edit-name').value;
+
+   let editDesc = document.getElementById('edit-desc').value;
+
+   const editEvent = {
+    name: editName,
+    description: editDesc,
+
+    author: 'Azad'
+}
+   
+       fetch('http://localhost:3000/api/events/'+di,{
+           method: 'PATCH',
+           body:JSON.stringify(editEvent),
+           headers:{
+               "Content-Type": "application/json"
+           }
+           
+       })
+
+
+})
+
+
+
+}
