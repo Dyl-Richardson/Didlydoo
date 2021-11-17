@@ -1,5 +1,7 @@
 
 const editInput = document.querySelector('.edit-input')
+const yes = document.getElementById('yes')
+const no = document.getElementById('no')
 
 const sendEvent  = document.getElementById('sendEvent')
 let name = "azad";
@@ -13,6 +15,7 @@ sendEvent.addEventListener('click',function(e){
     let  eventDesc = document.getElementById('eventDesc').value;
     let eventDate = document.getElementById('eventDate').value;
     let eventDate1 = document.getElementById('eventDate1').value;
+    let eventAuthor = document.getElementById('author')
     
     const newEvent = {
         name: eventName,
@@ -21,7 +24,7 @@ sendEvent.addEventListener('click',function(e){
             eventDate,
             eventDate1
         ],
-        author: 'Azad'
+        author: `${eventAuthor} `
     }
    
     
@@ -67,7 +70,7 @@ fetch("http://localhost:3000/api/events")
                 method:"Delete"
             })
         })
-
+        
         event.appendChild(del)
 
         // Edit button
@@ -224,15 +227,15 @@ cancle.addEventListener('click',()=>{
 changeBtn.addEventListener('click',()=>{
 
 
-  let  editName = document.getElementById('edit-name').value;
-
-   let editDesc = document.getElementById('edit-desc').value;
+    let  editName = document.getElementById('edit-name').value;
+    let  editAuthor = document.getElementById('edit-author').value;
+    let editDesc = document.getElementById('edit-desc').value;
 
    const editEvent = {
     name: editName,
     description: editDesc,
 
-    author: 'Azad'
+    author: `editAuthor `
 }
    
        fetch('http://localhost:3000/api/events/'+di,{
@@ -250,3 +253,5 @@ changeBtn.addEventListener('click',()=>{
 
 
 }
+
+

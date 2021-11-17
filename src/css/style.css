@@ -1,9 +1,14 @@
+*{
+  box-sizing: border-box;
+}
 body {
   padding: 0 5%;
 }
 
 header {
   text-align: center;
+width: 100%;
+
 }
 
 table {
@@ -72,3 +77,51 @@ article {
 #change, #cancle{
   padding: 3px;
 }
+.input{
+  display: grid;
+  grid-template-columns: repeat(2 ,auto);
+  flex-direction: row;
+  width: 100%;
+}
+
+.input{
+  width: 100%;
+  margin:-top 2rem;
+}
+
+.input .grid{
+  margin: 7px;
+  text-align: left;
+}
+.input .grid input{
+  width: 100%;
+  padding: 10px 5px;
+}
+
+button{
+  padding: 10px 20px;
+
+}
+header button{
+  padding: 10px 20px;
+  margin-top: 10px;
+  position: relative;
+  left: -10px;
+  cursor: pointer;
+}
+
+.addEventDate{
+  display: none;
+}
+
+.sureBtn{
+  width: 300px;
+  height: 200px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
