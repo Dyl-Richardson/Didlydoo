@@ -1,16 +1,17 @@
-*{
+* {
   box-sizing: border-box;
 }
 body {
   padding: 0 5%;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
   text-align: center;
-width: 100%;
-
+  width: 100%;
 }
 
+/* Table */
 table {
   border: 1px solid black;
   width: 55vw;
@@ -35,26 +36,8 @@ article {
   margin-top: 3%;
 }
 
-.v {
-  color: green;
-}
-
-.x {
-  color: red;
-}
-
-.null {
-  color: grey;
-}
-
-.v,
-.x,
-.null {
-  font-weight: bold;
-}
-
-
-.edit-input{
+/* Input */
+.edit-input {
   width: 300px;
   height: 250px;
   background-color: wheat;
@@ -67,42 +50,42 @@ article {
   display: none;
 }
 
-.edit-input.show{
+.edit-input.show {
   display: flex;
 }
-.e-input{
+.e-input {
   margin-top: 1rem;
 }
 
-#change, #cancle{
+#change,
+#cancel {
   padding: 3px;
 }
-.input{
+.input {
   display: grid;
-  grid-template-columns: repeat(2 ,auto);
+  grid-template-columns: repeat(2, auto);
   flex-direction: row;
   width: 100%;
 }
 
-.input{
+.input {
   width: 100%;
-  margin:-top 2rem;
+  margin: -top 2rem;
 }
 
-.input .grid{
+.input .grid {
   margin: 7px;
   text-align: left;
 }
-.input .grid input{
+.input .grid input {
   width: 100%;
   padding: 10px 5px;
 }
 
-button{
+button {
   padding: 10px 20px;
-
 }
-header button{
+header button {
   padding: 10px 20px;
   margin-top: 10px;
   position: relative;
@@ -110,11 +93,11 @@ header button{
   cursor: pointer;
 }
 
-.addEventDate{
+.addEventDate {
   display: none;
 }
 
-.sureBtn{
+.sureBtn {
   width: 300px;
   height: 200px;
   background-color: red;
@@ -125,3 +108,39 @@ header button{
   right: 0;
 }
 
+/* V / X / ? */
+.red,
+.green,
+.null {
+  width: 1vw;
+}
+
+.red {
+  filter: invert(12%) sepia(74%) saturate(4290%) hue-rotate(355deg)
+    brightness(81%) contrast(116%);
+}
+
+.green {
+  filter: invert(29%) sepia(83%) saturate(4577%) hue-rotate(135deg)
+    brightness(95%) contrast(105%);
+}
+
+.null {
+  filter: invert(37%) sepia(0%) saturate(2881%) hue-rotate(205deg)
+    brightness(89%) contrast(81%);
+}
+
+/* H1 */
+
+h1 {
+  color: rgb(0, 27, 177);
+  font-weight: bold;
+  font-size: 56px;
+  margin: 0;
+}
+
+/* Button add member */
+
+.addMember {
+  margin-left: 5%;
+}
