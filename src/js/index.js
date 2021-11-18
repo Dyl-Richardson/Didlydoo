@@ -169,6 +169,7 @@ fetch("http://localhost:3000/api/events")
                     const numberOfChild = e.target.parentElement.parentElement.childElementCount
                     const date = []
                     for (let index = 1; index < numberOfChild ; index++) {
+                        console.log(new Boolean(e.target.parentElement.parentElement.children[index].value));
                         date.push(
                             { 
                                 "date": data[0].dates[index-1].date,
@@ -232,12 +233,7 @@ fetch("http://localhost:3000/api/events")
         }
     })
   
-
-
-
 function  chanThis(di) {
-    
-
 const changeBtn = document.getElementById('change')
 const cancle= document.getElementById('cancle')
 
@@ -245,10 +241,7 @@ cancle.addEventListener('click',()=>{
     editInput.classList.remove('show')
 })
 
-
-
 changeBtn.addEventListener('click',()=>{
-
 
     let  editName = document.getElementById('edit-name').value;
     let  editAuthor = document.getElementById('edit-author').value;
@@ -276,5 +269,3 @@ changeBtn.addEventListener('click',()=>{
 
 
 }
-
-

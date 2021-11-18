@@ -42,15 +42,6 @@
         ]
       },
       {
-        "name": "Dylan",
-        "dates": [
-          {
-            "date": "2022-03-17",
-            "available": true
-          }
-        ]
-      },
-      {
         "name": "Marc",
         "dates": [
           {
@@ -72,7 +63,7 @@
         ]
       },
       {
-        "name": "Luc",
+        "name": "JP",
         "dates": [
           {
             "date": "2022-03-17",
