@@ -38,13 +38,9 @@ sendEvent.addEventListener('click',function(e){
         
     })
   
-
     e.preventDefault();
 })
  
-
-
-
 // Button add date
 const addEventDate = document.querySelector(".addEventDate")
 
@@ -64,7 +60,7 @@ fetch("http://localhost:3000/api/events")
 
         // Delete button
         const del = document.createElement("button")
-        del.innerText = "delete"
+        del.innerText = "Delete"
         del.addEventListener('click',()=>{
             fetch("http://localhost:3000/api/events/"+ data[i].id+"/",{
                 method:"Delete"
@@ -75,7 +71,7 @@ fetch("http://localhost:3000/api/events")
 
         // Edit button
         const edit = document.createElement("button")
-        edit.innerText = "edit"
+        edit.innerText = "Edit"
         edit.addEventListener('click',()=>{
             editInput.classList.toggle('show')
             chanThis(data[i].id)
@@ -114,18 +110,21 @@ fetch("http://localhost:3000/api/events")
                 // event attendees available
                 for (let date = 0; date < data[i].dates.length; date++) {
                     const tdMemberDispo = document.createElement("td")
+                    const img = document.createElement("img")
+
                     if (data[i].dates[date].attendees[member].available === true) {
-                        tdMemberDispo.innerText = "V"
-                        tdMemberDispo.className = "v"
+                        img.className = "green"
+                        img.src = "./images/v.svg"
                     }
                     else if (data[i].dates[date].attendees[member].available === false) {
-                        tdMemberDispo.innerText = "X"
-                        tdMemberDispo.className = "x"
+                        img.className = "red"
+                        img.src = "./images/x.svg"
                     }
                     else {
-                        tdMemberDispo.innerText = "?"
-                        tdMemberDispo.className = "null"  
+                        img.className = "null"
+                        img.src = "./images/q.svg"
                     }
+                    tdMemberDispo.appendChild(img)
                     trMember.appendChild(tdMemberDispo)
                 }
                 table.appendChild(trMember)
@@ -153,6 +152,7 @@ fetch("http://localhost:3000/api/events")
             // add participant
             const addMember = document.createElement("button")
             addMember.innerText = "+"
+            addMember.className = "addMember"
             addMember.addEventListener("click", e => {
                 const newTr = document.createElement("tr")
                 const newTd = document.createElement("td")
@@ -160,7 +160,7 @@ fetch("http://localhost:3000/api/events")
                 name.placeholder = "name"
                 name.className = "name"
 
-                // 
+                // push to api
                 const pushButton = document.createElement("button")
                 pushButton.innerText = "Add"
                 pushButton.id = data[i].id
@@ -169,11 +169,10 @@ fetch("http://localhost:3000/api/events")
                     const numberOfChild = e.target.parentElement.parentElement.childElementCount
                     const date = []
                     for (let index = 1; index < numberOfChild ; index++) {
-                        console.log(new Boolean(e.target.parentElement.parentElement.children[index].value));
                         date.push(
                             { 
                                 "date": data[0].dates[index-1].date,
-                                "available": new Boolean(e.target.parentElement.parentElement.children[index].value) 
+                                "available": new Boolean(e.target.parentElement.parentElement.children[index].value)
                             }
                         )
                     }
@@ -182,7 +181,6 @@ fetch("http://localhost:3000/api/events")
                         "name": e.target.nextSibling.value,
                         "dates" : date
                     }
-                    console.log(info);
 
                     fetch("http://localhost:3000/api/events/"+id+"/attend", {
                         method: 'POST',
@@ -191,30 +189,29 @@ fetch("http://localhost:3000/api/events")
                             "Content-Type": "application/json"
                         }
                     })
-
                 }) 
                 newTd.appendChild(pushButton)
-                // 
-
                 newTd.appendChild(name)
                 newTr.appendChild(newTd)
+
                 // edit available
                 for (let index = 0; index < data[i].dates.length; index++) {        
                     const td = document.createElement("td")
-                    const button = document.createElement("button")
-                    button.innerText = "?"
+                    const button = document.createElement("img")
+                    button.className = "red"
+                    button.src = "./images/x.svg"
+                    td.value = false
                     button.addEventListener("click", e => {
-                        if (button.textContent === "?") {
-                            button.innerText = "V"
-                            td.value = "true"
+                        console.log(td.value);
+                        if (td.value === false) {
+                            button.src = "./images/v.svg"
+                            button.className = "green"
+                            td.value = true
                         }
-                        else if (button.textContent === "V") {
-                            button.innerText = "X"
-                            td.value = "false"
-                        }
-                        else {
-                            button.innerText = "?"
-                            td.value = "null"
+                        else if (td.value === true) {
+                            button.src = "./images/x.svg"
+                            button.className = "red"
+                            td.value = false
                         }
                     })
                     td.appendChild(button)
@@ -235,9 +232,9 @@ fetch("http://localhost:3000/api/events")
   
 function  chanThis(di) {
 const changeBtn = document.getElementById('change')
-const cancle= document.getElementById('cancle')
+const cancel= document.getElementById('cancel')
 
-cancle.addEventListener('click',()=>{
+cancel.addEventListener('click',()=>{
     editInput.classList.remove('show')
 })
 
@@ -250,22 +247,15 @@ changeBtn.addEventListener('click',()=>{
    const editEvent = {
     name: editName,
     description: editDesc,
-
     author: `editAuthor `
-}
-   
+    }
+
        fetch('http://localhost:3000/api/events/'+di,{
            method: 'PATCH',
            body:JSON.stringify(editEvent),
            headers:{
                "Content-Type": "application/json"
-           }
-           
+           }           
        })
-
-
 })
-
-
-
 }
